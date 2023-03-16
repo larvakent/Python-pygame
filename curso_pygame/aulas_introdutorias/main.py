@@ -8,6 +8,7 @@ largura = 640
 altura = 480
 
 tela = pygame.display.set_mode((largura, altura))
+pygame.display.set_caption("Game")
 
 while True:
     for event in pygame.event.get():
