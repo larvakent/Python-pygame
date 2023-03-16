@@ -5,16 +5,22 @@ from random import randint
 
 pygame.init()
 
+pygame.mixer.music.set_volume(0.3)
+musica_de_fundo = pygame.mixer.music.load('BoxCat Games - CPU Talk.mp3')
+pygame.mixer.music.play(-1)
+
+barulho_colisao = pygame.mixer.Sound('smw_coin.wav')
+
 largura = 640
 altura = 480
-x = largura/2
-y = altura/2
+x = int(largura/2)
+y = int(altura/2)
 
 x_azul = randint(40, 600)
 y_azul = randint(50, 430)
 
 pontos = 0
-fonte = pygame.font.SysFont("arial", 40, True, True)
+fonte = pygame.font.SysFont("arial", 40, bold=True, italic=True)
 
 tela = pygame.display.set_mode((largura, altura))
 pygame.display.set_caption("Game")
@@ -55,6 +61,7 @@ while True:
         x_azul = randint(40, 600)
         x_azul = randint(50, 400)
         pontos+=1
+        barulho_colisao.play()
 
     tela.blit(texto_formatado, (400,40))
     pygame.display.update()
