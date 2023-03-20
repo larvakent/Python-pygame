@@ -24,7 +24,7 @@ class Personagem(pygame.sprite.Sprite):
         self.image= pygame.transform.scale(self.image, (64*5, 64*5))
 
         self.rect = self.image.get_rect()
-        self.rect.topleft = 300, 250
+        self.rect.topleft = 220, 220
 
     def update(self):
         self.atual += 0.4
