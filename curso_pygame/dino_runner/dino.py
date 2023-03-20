@@ -50,10 +50,18 @@ class Nuvens(pygame.sprite.Sprite):
 
     def update(self):
         if self.rect.topright[0] < 0:
-            self.rect.x = LARGURA
+            self.rect.x = LARGURA 
             self.rect.y = randrange(50, 200, 50)
         self.rect.x -= 10
 
+class Chao(pygame.sprite.Sprite):
+    def __init__(self):
+        pygame.sprite.Sprite.__init__(self)
+        self.image = sprite_sheet.subsurface((6*32, 0), (32, 32))
+        self.image = pygame.transform.scale(self.image, (32*2, 32*2))
+        self.rect = self.image.get_rect()
+        self.rect.y = ALTURA - 64
+        self.rect.x = LARGURA - 64
 
 todas_as_sprites = pygame.sprite.Group()
 dino = Dino()
@@ -62,6 +70,10 @@ todas_as_sprites.add(dino)
 for i in range(3):
     nuvem = Nuvens()
     todas_as_sprites.add(nuvem)
+
+for i in range(6):
+    chao = Chao()
+    todas_as_sprites.add(chao)
 
 relogio = pygame.time.Clock()
 while True:
